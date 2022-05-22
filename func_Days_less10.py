@@ -19,7 +19,6 @@ current_day=current_day+1
 
 this_month = [i for i in range(1, current_day)]
 
-
 def func_Days_less10():
   for i in this_month:
     if 1<=i<10:
@@ -31,7 +30,6 @@ def func_Days_less10():
             root = doc.getElementsByTagName("ValCurs")[0]
             global data
             data = f"{i}.{current_month}.{current_year}"
-            print(data)
             currency = doc.getElementsByTagName("Valute")
             for rate in currency:
 
@@ -41,7 +39,6 @@ def func_Days_less10():
                 nominal1 = rate.getElementsByTagName("Nominal")[0]
                 name1 = rate.getElementsByTagName("Name")[0]
                 value1 = rate.getElementsByTagName("Value")[0]
-
 
                 global numcode
                 numcode=numcode1.firstChild.data
@@ -53,10 +50,10 @@ def func_Days_less10():
                 name=name1.firstChild.data
                 global value
                 value=value1.firstChild.data
-               # print(id, numcode, charcode, nominal, name, value)
+
                 def add_data_in_table():
                   add_data = "INSERT INTO currencies (data, id, numcode, charcode, nominal, name, value) VALUES (%s, %s, %s, %s, %s, %s, %s)"
                   record= ( data, id, numcode, charcode, nominal, name, value)
                   models.cursor.execute(add_data, record)
                 add_data_in_table()
-#add_data_in_table()
+
