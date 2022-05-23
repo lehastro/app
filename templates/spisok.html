@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{% block title %} Выберите дату {% endblock %}</h1>
+
+<select name="user_profile_color_1">
+    {% for data in data %}
+      <option {% if data== data %}selected{% endif %}
+              value="{{ data.id }}">{{ data [0] }}</option>
+    {% endfor %}
+</select>
+
+
+{% for data in data %}
+
+<div class='my_table'>
+    <h3> {{ data[0] }} </h3>
+    <a href="{{ url_for('home_page') }}">{{ data[0] }}</a>
+</div>
+{% endfor %}
+{% endblock %}
+
+
